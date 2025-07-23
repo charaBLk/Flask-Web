@@ -25,10 +25,17 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbar">
-            <a class="nav-item nav-link" id="login" href="/auth/login">Login</a>
-            <a class="nav-item nav-link" id="signUp" href="/auth/sign_up">Sign up</a>
+            {%if current_user.authenticated%}
             <a class="nav-item nav-link" id="logout" href="/auth/logout">Logout</a>
             <a class="nav-item nav-link" id="home" href="/">Home</a>
+
+            {%else%}
+            
+            <a class="nav-item nav-link" id="login" href="/auth/login">Login</a>
+            <a class="nav-item nav-link" id="signUp" href="/auth/sign_up">Sign up</a>
+            
+            {%endif%}
+            
 
           </div>
         </nav>
