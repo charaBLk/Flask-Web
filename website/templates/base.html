@@ -37,6 +37,23 @@
           {%block content%}
           {%endblock%}
         </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+              {% for cat, msg in messages %}
+                {% if cat == 'error' %}
+                  <div class="alert alert-danger" role="alert">
+                    {{ msg }}
+                    
+                  </div>
+                {% elif cat == 'success' %}
+                  <div class="alert alert-success" role="alert">
+                    {{ msg }}
+                  </div>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
         <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
